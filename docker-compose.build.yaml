@@ -1,0 +1,11 @@
+version: '3'
+services:
+  piko-admin:
+    build: ./piko-admin
+    image: piko/piko-admin
+  piko-locations:
+    build: ./piko-locations
+    image: piko/piko-locations
+  piko-maps:
+    build: ./piko-maps
+    image: piko/piko-maps

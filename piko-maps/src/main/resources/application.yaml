@@ -1,0 +1,31 @@
+server:
+  port: 8082
+
+spring:
+  application.name: piko-maps
+  datasource:
+    url: jdbc:postgresql://localhost:5432/piko_maps
+    username: piko_maps
+    password: piko_maps
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+  cloud:
+    stream:
+      default:
+        contentType: application/json
+      kafka:
+        binder:
+          brokers: localhost:9092
+      bindings:
+        location-events-in:
+          destination: location-events
+          group: piko-maps
+
+logging:
+  level:
+    com.bluesoft: debug
+    org.apache.kafka.clients.consumer.ConsumerConfig: error
+    org.apache.kafka.clients.producer.ProducerConfig: error
+    org.apache.kafka.clients.admin.AdminClientConfig: error

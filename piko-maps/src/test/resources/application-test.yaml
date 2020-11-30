@@ -1,0 +1,11 @@
+auth:
+  accepted-issuers:
+    - name: test-issuer
+      url: test-issuer
+      jwks-url: https://cognito-idp.eu-west-1.amazonaws.com/eu-west-1_ka4APzVaT/.well-known/jwks.json
+
+#spring:
+#  jpa:
+#    show-sql: true
+#    properties:
+#      hibernate.format_sql: true

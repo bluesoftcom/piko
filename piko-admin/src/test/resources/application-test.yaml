@@ -1,0 +1,14 @@
+auth:
+  accepted-issuers:
+    - name: test-issuer
+      url: test-issuer
+      jwks-url: https://cognito-idp.eu-west-1.amazonaws.com/eu-west-1_ka4APzVaT/.well-known/jwks.json
+cognito:
+  endpoint: http://localhost:23094/cognito/
+mailcatcher:
+  url: http://localhost:1080
+#spring:
+#  jpa:
+#    show-sql: true
+#    properties:
+#      hibernate.format_sql: true

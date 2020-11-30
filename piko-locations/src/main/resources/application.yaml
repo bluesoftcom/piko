@@ -1,0 +1,40 @@
+auth:
+  enabled: true
+  username-claim: "cognito:username"
+  email-claim: "email"
+  accepted-issuers:
+    - name: cognito
+      url: https://cognito-idp.eu-west-1.amazonaws.com/eu-west-1_ka4APzVaT
+      jwks-url: https://cognito-idp.eu-west-1.amazonaws.com/eu-west-1_ka4APzVaT/.well-known/jwks.json
+
+spring:
+  application.name: piko-locations
+  datasource:
+    url: jdbc:postgresql://localhost:5432/piko_locations
+    username: piko_locations
+    password: piko_locations
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+  cloud:
+    stream:
+      default:
+        contentType: application/json
+      kafka:
+        binder:
+          brokers: localhost:9092
+      bindings:
+        location-events-out:
+          destination: location-events
+          group: piko-locations
+        location-events-in:
+          destination: location-events
+          group: piko-locations
+
+logging:
+  level:
+    com.bluesoft: debug
+    org.apache.kafka.clients.consumer.ConsumerConfig: error
+    org.apache.kafka.clients.producer.ProducerConfig: error
+    org.apache.kafka.clients.admin.AdminClientConfig: error
